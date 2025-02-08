@@ -279,7 +279,7 @@ Usage is same as defined above for functions and filters
 2. Numbers: 
     - Single core: `163_767 ops/s`, 4-core: `572_487 ops/s` for a large template using all available capabilities ([full.blu](src/main/resources/full.blu)). 
     - Single core: `3_147_166 ops/s`(3+Million) , 4-core: `10_278_819 ops/s`(10+Million) for a small template using variables and if-else conditions only ([small.blu](src/main/resources/small.blu)).
-3. Detailed results available in [`jmh_report_template_full.txt`]('jmh_report_template_full.txt') and [`jmh_report_template_small.txt`]('jmh_report_template_small.txt').
+3. Detailed results available in [jmh_report_template_full.txt](jmh_report_template_full.txt) and [jmh_report_template_small.txt](jmh_report_template_small.txt).
 4. Tested on M1 Mac, 8GB
 5. Running benchmark with demo template (`full.blu`)
 > You can adjust the template in `BenchmarkRunner.java` by adjusting just this single line: `String templateFileName = "full.blu";  // or small.blu`
