@@ -30,7 +30,7 @@ public class BenchmarkRunner {
                 BenchmarkRunner.class.getClassLoader().getResourceAsStream(templateFileName),
                 StandardCharsets.UTF_8)).lines().collect(Collectors.joining("\n"));
 
-        context = templateFileName.equals("full.blu") ? SampleTemplateData.getContextForFull() : SampleTemplateData.getContextForEmail();
+        context = templateFileName.equals("full.blu") ? SampleTemplateData.getContextForFullTemplate() : SampleTemplateData.getContextForSmallTemplate();
 
         engine = new Blueprint();
 

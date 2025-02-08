@@ -4,7 +4,7 @@ import java.util.*;
 
 public class SampleTemplateData {
     // sample data... uses Map and Class, both kind of data for demonstration
-    public static Map<String, Object> getContextForFull() {
+    public static Map<String, Object> getContextForFullTemplate() {
         Map<String, Object> context = new HashMap<>();
 
         Map<String, Object> customer = new HashMap<>();
@@ -44,7 +44,7 @@ public class SampleTemplateData {
         return context;
     }
 
-    public static Map<String, Object> getContextForEmail() {
+    public static Map<String, Object> getContextForSmallTemplate() {
         Map<String, Object> order = new HashMap<>();
         order.put("number", "12345");
         order.put("total", 70);

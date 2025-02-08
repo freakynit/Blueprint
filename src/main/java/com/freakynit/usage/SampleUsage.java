@@ -18,7 +18,7 @@ public class SampleUsage {
                 SampleUsage.class.getClassLoader().getResourceAsStream(templateFileName),
                 StandardCharsets.UTF_8)).lines().collect(Collectors.joining("\n"));
 
-        Map<String, Object> context = templateFileName.equals("full.blu") ? SampleTemplateData.getContextForFull() : SampleTemplateData.getContextForEmail();
+        Map<String, Object> context = templateFileName.equals("full.blu") ? SampleTemplateData.getContextForFullTemplate() : SampleTemplateData.getContextForSmallTemplate();
 
         Blueprint engine = new Blueprint();
 
