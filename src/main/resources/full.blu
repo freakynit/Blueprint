@@ -1,0 +1,83 @@
+{# Set up some basic values and a demo object literal #}
+{% set minOrderAmount = 50 %}
+{% set taxRate = 0.08 %}
+{% set demoCustomer = { firstName: "Jane", lastName: "Doe", age: 29 } %}
+Demo Customer: {{ demoCustomer.firstName }} {{ demoCustomer.lastName }}, Age: {{ demoCustomer.age }}
+
+{# Welcome message using data passed in (e.g. customer object) #}
+Welcome, {{ customer.name | capitalize }}!
+
+{# Order summary information #}
+Your Order Summary:
+Order Number: {{ customer.order.number }}
+Subtotal: ${{ customer.order.subtotal }}
+
+{% if customer.order.subtotal >= minOrderAmount %}
+  You qualify for free shipping!
+{% else %}
+  Add ${{ (minOrderAmount - customer.order.subtotal) | abs }} more to qualify for free shipping.
+{% endif %}
+
+Taxes ({{ taxRate * 100 }}%): ${{ customer.order.subtotal * taxRate }}
+Total: ${{ customer.order.subtotal + (customer.order.subtotal * taxRate) }}
+
+{# List of purchased items with a check for even/odd pricing using modulo #}
+Purchased Items:
+{% for item in customer.order.items %}
+  - {{ item.name | capitalize }}: ${{ item.price }}
+    {% if item.price % 2 == 0 %}
+      (Even priced)
+    {% else %}
+      (Odd priced)
+    {% endif %}
+{% endfor %}
+
+{# Demonstrate string filters: replace and capitalize #}
+{% set note = 'please review your order carefully' %}
+Order Note (modified): {{ note | replace('please', 'kindly') | capitalize }}
+
+{# Array literal assignment: Transaction history #}
+Transaction History:
+{% set transactions = [
+  { date: "2025-01-10", amount: 35 },
+  { date: "2025-02-15", amount: 80 },
+  { date: "2025-03-05", amount: 60 }
+] %}
+{% for txn in transactions %}
+  - On {{ txn.date }}, Amount: ${{ txn.amount }}
+{% endfor %}
+
+{# Using the power operator to calculate reward points #}
+<p>Reward Points (computed as power of 2): {{ 2 ** 3 }}</p>
+
+{# Using join filter to list order IDs (assumes customer.order.ids is an array) #}
+Order IDs: {{ customer.order.ids | join(", ") }}
+
+{# Raw block: content inside is not processed by the template engine #}
+{% raw %}
+Raw message: This {{ variable }} is not processed, and neither is {% anyTag %}.
+{% endraw %}
+
+{# Define a macro to format the shipping address #}
+{% macro formatAddress(address) %}
+  {{ address.street | capitalize }}, {{ address.city | upper }}, {{ address.zip }}
+{% endmacro %}
+
+Shipping Address:
+{{ formatAddress(customer.address) }}
+
+{# Render a table of purchased items with alternating row backgrounds using loop.index #}
+<table border="1" cellspacing="0">
+    <tr>
+        <th>#</th>
+        <th>Item</th>
+        <th>Price</th>
+    </tr>
+    {% for item in customer.order.items %}
+    <tr style="background-color: {% if loop.index % 2 == 0 %}#f2f2f2{% else %}#ffffff{% endif %};">
+        <td>{{ loop.index }}</td>
+        <td>{{ item.name | capitalize }}</td>
+        <td>${{ item.price }}</td>
+    </tr>
+    {% endfor %}
+</table>

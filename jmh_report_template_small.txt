@@ -1,0 +1,63 @@
+# JMH version: 1.37
+# VM version: JDK 1.8.0_412, OpenJDK 64-Bit Server VM, 25.412-b08
+# VM invoker: /Users/nitinbansal/.sdkman/candidates/java/8.0.412-amzn/jre/bin/java
+# VM options: <none>
+# Blackhole mode: full + dont-inline hint (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 10 s each
+# Measurement: 3 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 4 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.freakynit.benchmark.BenchmarkRunner.benchmarkFourThreads
+
+# Run progress: 0.00% complete, ETA 00:01:20
+# Fork: 1 of 1
+# Warmup Iteration   1: 9969745.992 ops/s
+Iteration   1: 10250450.155 ops/s
+Iteration   2: 10329932.132 ops/s
+Iteration   3: 10256077.436 ops/s
+
+
+Result "com.freakynit.benchmark.BenchmarkRunner.benchmarkFourThreads":
+  10278819.908 ±(99.9%) 809178.755 ops/s [Average]
+  (min, avg, max) = (10250450.155, 10278819.908, 10329932.132), stdev = 44353.818
+  CI (99.9%): [9469641.152, 11087998.663] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 1.8.0_412, OpenJDK 64-Bit Server VM, 25.412-b08
+# VM invoker: /Users/nitinbansal/.sdkman/candidates/java/8.0.412-amzn/jre/bin/java
+# VM options: <none>
+# Blackhole mode: full + dont-inline hint (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 10 s each
+# Measurement: 3 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.freakynit.benchmark.BenchmarkRunner.benchmarkSingleThread
+
+# Run progress: 50.00% complete, ETA 00:00:40
+# Fork: 1 of 1
+# Warmup Iteration   1: 3121226.224 ops/s
+Iteration   1: 3146722.925 ops/s
+Iteration   2: 3147281.163 ops/s
+Iteration   3: 3147495.644 ops/s
+
+
+Result "com.freakynit.benchmark.BenchmarkRunner.benchmarkSingleThread":
+  3147166.577 ±(99.9%) 7277.411 ops/s [Average]
+  (min, avg, max) = (3146722.925, 3147166.577, 3147495.644), stdev = 398.899
+  CI (99.9%): [3139889.167, 3154443.988] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:01:20
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                               Mode  Cnt         Score        Error  Units
+BenchmarkRunner.benchmarkFourThreads   thrpt    3  10278819.908 ± 809178.755  ops/s
+BenchmarkRunner.benchmarkSingleThread  thrpt    3   3147166.577 ±   7277.411  ops/s

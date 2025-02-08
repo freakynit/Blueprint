@@ -1,0 +1,15 @@
+Subject: Your Order Confirmation - #{{ order.number }}
+
+Hello {{ customer.name }},
+
+Thank you for your order! Your total is ${{ order.total }}.
+
+{% if order.total >= 50 %}
+You qualify for free shipping!
+{% else %}
+Spend ${{ 50 - order.total }} more to get free shipping.
+{% endif %}
+
+We appreciate your business!
+
+- The Store Team
