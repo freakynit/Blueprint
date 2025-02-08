@@ -2,8 +2,8 @@
 
 1. Blueprint is a single class, lightweight, easily extensible, zero external dependencies, and java-8 compatible templating engine for Java with same easily readable syntax as [Nunjucks](https://mozilla.github.io/nunjucks/).
 2. Blueprint is pretty fast too. Following results are on a M1 Mac 8GB:
-    - Single core: `163_767 ops/s`, 4-core: `572_487 ops/s` for a large template using all available capabilities (`full.blu`).
-    - Single core: `3_147_166 ops/s`(3+Million) , 4-core: `10_278_819 ops/s`(10+Million) for a small template using variables and if-else conditions only (`small.blu`).
+    - Single core: `163_767 ops/s`, 4-core: `572_487 ops/s` for a large template using all available capabilities ([full.blu](src/main/resources/full.blu)).
+    - Single core: `3_147_166 ops/s`(3+Million) , 4-core: `10_278_819 ops/s`(10+Million) for a small template using variables and if-else conditions only ([small.blu](src/main/resources/small.blu)).
     - See [`Performance`](#Performance) section for details.
 
 ---
@@ -277,8 +277,8 @@ Usage is same as defined above for functions and filters
 ## Performance
 1. JMH benchmarks are integrated. Check out [`BenchmarkRunner.java`](src/main/java/com/freakynit/benchmark/BenchmarkRunner.java).
 2. Numbers: 
-    - Single core: `163_767 ops/s`, 4-core: `572_487 ops/s` for a large template using all available capabilities (`full.blu`). 
-    - Single core: `3_147_166 ops/s`(3+Million) , 4-core: `10_278_819 ops/s`(10+Million) for a small template using variables and if-else conditions only (`small.blu`).
+    - Single core: `163_767 ops/s`, 4-core: `572_487 ops/s` for a large template using all available capabilities ([full.blu](src/main/resources/full.blu)). 
+    - Single core: `3_147_166 ops/s`(3+Million) , 4-core: `10_278_819 ops/s`(10+Million) for a small template using variables and if-else conditions only ([small.blu](src/main/resources/small.blu)).
 3. Detailed results available in [`jmh_report_template_full.txt`]('jmh_report_template_full.txt') and [`jmh_report_template_small.txt`]('jmh_report_template_small.txt').
 4. Tested on M1 Mac, 8GB
 5. Running benchmark with demo template (`full.blu`)
