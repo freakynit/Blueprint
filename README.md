@@ -45,7 +45,7 @@
 - **Dynamic Property Resolution**  
   Supports dot–notation (`user.name`) and bracket–notation (`matrix[1][2]`) to access nested object properties and array elements. Reflection-based property lookup (when using class instances instead of Map for context data) is cached for improved performance.
 
-- **separate compile and render phases**
+- **Separate compile and render phases**
   For repeated usage of same template (with different data/context), compile the template once and re-use the template for different data sets. See [`SampleUsage.java`](src/main/java/com/freakynit/usage/SampleUsage.java) or [`BenchmarkRunner.java`](src/main/java/com/freakynit/benchmark/BenchmarkRunner.java).
 
 ---
