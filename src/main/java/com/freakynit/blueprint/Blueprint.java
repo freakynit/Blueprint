@@ -95,12 +95,31 @@ public class Blueprint {
         // resolve a variable name from the context. Supports “dot–notation” and array access using bracket–notation.
         // Examples: "user.name" or "user.colors[0]" or "matrix[1][2]".
         public Object resolve(String variable) {
-            String[] parts = variable.split("\\.");
-            Object value = context.get(parts[0]);
-            for (int i = 1; i < parts.length; i++) {
-                value = resolvePart(value, parts[i]);
-                if (value == null) {
-                    break;
+            // Check if the variable has a dot to separate into tokens.
+            int dotIndex = variable.indexOf('.');
+            String firstToken = (dotIndex == -1) ? variable : variable.substring(0, dotIndex);
+            Object value;
+
+            // If the first token contains a bracket, extract the base variable name.
+            int bracketIndex = firstToken.indexOf('[');
+            if (bracketIndex != -1) {
+                String baseVar = firstToken.substring(0, bracketIndex);
+                value = context.get(baseVar);
+                // Process the remaining bracket parts (e.g. "[1]").
+                String remaining = firstToken.substring(bracketIndex);
+                value = resolvePart(value, remaining);
+            } else {
+                value = context.get(firstToken);
+            }
+
+            // If there are additional dot-separated parts, process them.
+            if (dotIndex != -1) {
+                String[] parts = variable.substring(dotIndex + 1).split("\\.");
+                for (String part : parts) {
+                    value = resolvePart(value, part);
+                    if (value == null) {
+                        break;
+                    }
                 }
             }
             return value;
